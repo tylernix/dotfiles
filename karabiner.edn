@@ -1,0 +1,58 @@
+{
+    :simlayers {
+        :movement-mode {:key :f}
+        :delete-mode {:key :d}
+        :select-mode {:key :s }
+    }
+
+    :main [
+        {:des "movement"
+        :rules [:movement-mode
+            ;; navigate up/down/left/right
+            [:##j :left_arrow]
+            [:##k :down_arrow]
+            [:##i :up_arrow]
+            [:##l :right_arrow]
+
+            ;; navigate left/right word-by-word
+            [:##h :!Oleft_arrow]
+            [:semicolon :!Oright_arrow]
+
+            ;; navigate to front/end of line
+            [:##u :!Cleft_arrow]
+            [:##o :!Cright_arrow]
+        ]
+        }
+
+        {:des "delete"
+        :rules [:delete-mode
+            ;; delete line before/behind
+            [:##u :!Cdelete_or_backspace]
+            [:##o :!Cdelete_forward]
+
+            ;; delete character left/right
+            [:##j :delete_or_backspace]
+            [:##k :delete_forward]
+
+            ;; delete word left/right
+            [:##h :!Odelete_or_backspace]
+            [:##l :!Odelete_forward]
+
+            ;; undo button (i.e. control-z)
+            [:##spacebar :!Cz]
+        ]}
+
+        {:des "select"
+        :rules [:select-mode
+            ;; select to front/end of line 
+            [:##u :!CSleft_arrow]
+            [:##o :!CSright_arrow]
+
+            ;; select left/right/up/down
+            [:##j :!Sleft_arrow]
+            [:##k :!Sdown_arrow]
+            [:##i :!Sup_arrow]
+            [:##l :!Sright_arrow]
+        ]}
+    ]
+}
